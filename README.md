@@ -1,2 +1,3 @@
+## 0.1.0 - First Release
 # Notes
-学习笔记整理
+* 记录学习笔记
