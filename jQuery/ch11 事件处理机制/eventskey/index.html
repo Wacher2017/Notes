@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>eventskey</title>
+		<style>
+			.me{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -200px;
+				margin-top: -75px;
+				width: 400px;
+				height: 150px;
+				background-color: #ccc;
+				overflow: auto;
+			}
+			
+			input{
+				border: 1px solid black;
+				font-size: 40px;
+				width: 397px;
+				height: 50px;
+			}
+			
+			.sc{
+				width: 100%;
+				height: 30px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				var numarr = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+				//keydown代表键盘按键按下的时候触发的事件
+				//keyup 代表键盘按键抬起的时候触发事件
+				//keypress 代表按键按下-抬起的完整过程触发的事件
+				//利用event.keyCode获取当前按下的按键的ascii码
+				$("input").on("keydown",function(event){
+					console.info("触发了keydown事件");
+					if(event.keyCode>=48 && event.keyCode<=57){
+						var t = numarr[event.keyCode-48];//零->48
+						console.info("本次输入的是："+t);
+						//在原有文本基础上增加汉字
+						$(".sc").text($(".sc").text() + t);
+						return true;//事件正常触发
+					}else{
+						return false;//当keydown中事件返回false时，本次事件被忽略
+					}
+					
+				});
+				
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div class="me">
+			键盘事件测试
+			<input type="text" value="" /><br />
+			<div class="sc"></div>
+		</div>
+	</body>
+</html>

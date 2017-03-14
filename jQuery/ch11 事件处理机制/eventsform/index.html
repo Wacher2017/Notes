@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>eventsform</title>
+		<style>
+			.me{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -200px;
+				margin-top: -75px;
+				width: 400px;
+				height: 150px;
+				background-color: #ccc;
+				overflow: auto;
+				padding: 10px;
+			}
+			
+			input[type="text"],select{
+				width: 200px;
+			}
+			
+			#tips{
+				color: red;
+			}
+			
+			.focusin{
+				background-color: lightgreen;
+				font-weight: bold;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				//被选中的组件获得焦点的时候触发
+				$("input[name='name']").on("focus",function(){
+					$(this).addClass("focusin");
+				});
+				//失去焦点时移出focusin CSS类
+				$("input[name='name']").on("blur",function(){
+					$(this).removeClass("focusin");
+				});
+				
+				//change代表内容变化时触发的事件，文本框触发change的条件是，如果内容发生变化时失去焦点触发
+				$("input[name='name']").on("change",function(){
+					var v = $(this).val();//获取当前对象的值
+					$("#tips").text("姓名为：" + v);
+				});
+				//select同样拥有change事件，更改选项时触发
+				$("select[name='sex']").on("change",function(){
+					var v = $(this).val();//获取当前对象的值
+					$("#tips").text("性别为：" + v);
+				});
+				
+				//submit提交表单前触发，可以控制是否提交
+				$("form").on("submit",function(){
+					var name = $("input[name='name']").val();
+					var sex = $("select[name='sex']").val();
+					if(name != "" && sex != "请选择"){
+						return true;//表单正常提交
+					}else{
+						alert("表单验证不通过，请检查输入项是否有效");
+						return false;//不允许提交
+					}
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div class="me">
+			表单事件测试
+			<div id="tips">这里显示提示信息</div>
+			<form action="#" method="post">
+				姓名：<input name="name" type="text" /><br />
+				性别：<select name="sex">
+					<option selected="selected">请选择</option>
+					<option>男</option>
+					<option>女</option>
+				</select>
+				<input type="submit" value="提交表单" />
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>eventsmouse</title>
+		<style>
+			.me{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -200px;
+				margin-top: -75px;
+				width: 400px;
+				height: 150px;
+				background-color: #ccc;
+				overflow: auto;
+			}
+			
+			input{
+				border: 1px solid black;
+				font-size: 40px;
+				width: 397px;
+				height: 50px;
+			}
+			
+			button{
+				width: 100%;
+				height: 50px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("button").on("click",function(){
+					$("input").css("background-color","lightblue");
+				});
+				
+				//在jQuery中提供了on事件等价的简化函数
+				$("button").dblclick(function(event){
+					event.stopPropagation();//停止双击事件的传播
+				});
+				
+				//移入触发mouseover，移出mouseout
+				//在jQuery中提供了一个简化函数hover()
+				$(".me").hover(function(){
+					//移动到目标上的时候触发的代码
+					$(this).css("background-color","red");
+				},function(){
+					//移出目标上的时候触发的代码
+					$(this).css("background-color","#ccc");
+				});
+				
+				//在事件处理函数中，有一个默认参数被称为“事件对象event”，包含了事件所产生的信息
+				//mouseover只在触发进入的瞬间触发一次，而mousemove则代表鼠标在目标上发生移动时随时触发
+				$(document).on("mousemove",function(event){
+					var x = event.pageX;//鼠标在文档上的X轴坐标
+					var y = event.pageY;//鼠标在文档上的Y轴坐标
+					$("#divPos").text("X:"+x+",Y:"+y);
+				});
+				
+				$(".me").on("dblclick",function(){
+					$(this).width(600);
+					$(this).height(200);
+				});
+				
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div id="divPos">这里显示坐标</div>
+		<div class="me">
+			事件测试案例
+			<input type="text" /><br />
+			<button>提交</button>
+		</div>
+	</body>
+</html>

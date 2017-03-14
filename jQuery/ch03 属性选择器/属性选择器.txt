@@ -1,0 +1,39 @@
+属性选择器
+一、属性选择器
+在HTML文档中，元素的开始标记中通常包含有多个属性（attribute）
+- <input id="txtUsername" type="text" value="qiyisoft" name="email" style="display:block"/>
+在jQuery中，除了直接使用id和class属性作为选择器之外，还可以根据各种属性（如title等）对由选择器查询到的元素进行过滤
+
+属性选择器包含在中括号“[]”中
+语法如下：
+- '$基本选择器[属性过滤选择器]'
+- 可以根据是否包含指定属性或者根据属性值从查询到的元素中进行筛选
+
+二、常用属性选择器种类
+1.属性过滤器
+	- 用于筛选给定属性等于某特定值的所有元素
+	- 格式：$("selector[sttribute=value]");
+2.开始过滤器
+	- 用于选择给定属性是以某特定值开始的所有元素
+	- 格式：$("selector[attribute^=value]")
+3.结尾过滤器
+	- 用于选择给定属性是以某特定值结尾的所有元素
+	- 格式：$("selector[attribute$=value]")
+4.任意匹配过滤器
+	- 用于选择给定属性值包含给定字符的所有元素
+	- 格式：$("selector[attribute*=value]")
+5.包含过滤器
+	- 用于选择指定属性值的所有元素
+	- 格式：$("*[attribute*=value]")
+6.复合过滤器
+	- 用于选择同时满足多个条件的所有元素
+	- 格式：$("*selector[selector][selector2...[]selector[N]]")
+	
+三、训练内容
+1.所有文本框
+2.标红所有.com结尾的超链接
+3.value属性包含"input"字符串组件
+4.用于rows属性的组件
+5.被选中的单选框/复选框
+6.所有"http://"开头的超链接
+7.被禁用的文本框

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>showAndHide</title>
+		<style>
+			.me{
+				position: absolute;
+				left: 50%;
+				top: 30%;
+				margin-left: -200px;
+				margin-top: -75px;
+				width: 400px;
+				height: 300px;
+				background-color: coral;
+				overflow: auto;
+				padding: 10px;
+				border: 30px solid lightblue;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#toggle").click(function(){
+					if($(".me").css("display") == "block"){
+						$(".me").hide(1000,function(){alert("我藏起来了，嘿嘿...");});//1000毫秒时间内将元素隐藏
+						//$(".me").slideUp(1000);//从下向上拉窗帘效果
+						//$(".me").fadeOut(1000);//渐出效果
+					}else if($(".me").css("display") == "none"){
+						$(".me").show(1000);//1秒时间内将元素显示出来
+						//$(".me").slideDown(1000);//从上向下拉窗帘效果
+						//$(".me").fadeIn(1000);//渐入效果
+					}
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<button id="toggle">显示/隐藏</button>
+		<div class="me"></div>
+	</body>
+</html>

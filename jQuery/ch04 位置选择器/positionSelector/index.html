@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>positionSelector</title>
+		<link rel="stylesheet" href="css/select.css" type="text/css" />
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				//利用:first获取组件
+				//$("li:first").css("border", "3px dotted lightblue");
+				//利用:last获取组件
+				//$("div:last").css("border", "3px dotted orange");
+				//奇数使用：odd,在jQuery中元素的索引从0开始
+				//$("p:odd").css("border", "3px dotted orange");
+				//偶数使用：even
+				//$("input[type='text']:even").css("border", "3px dotted orange");
+				//利用eq精确获取指定位置组件，下标从0开始
+				//$("a:eq(2)").css("border", "3px dotted orange");
+				//利用gt获取从指定位置之后的组件，下标从0开始
+				//$("li:gt(2)").css("border", "3px dotted orange");
+				//利用lt从获取指定位置之前的组件，下标从0开始
+				$("li:lt(1)").css("border", "3px dotted orange");
+			});
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div class="section">
+				<h1>jQuery 选择器实验室</h1>
+				<div class="domtree">
+					<p style="margin:0;"><small>Original lab by <a href="http://www.learningjquery.com/" target="_blank">Karl Swedberg</a> Enhanced by <a href="http://codylindley.com">Cody Lindley</a>. FYI(ie6 != supported)</small></p>
+					
+					<div id="myid">This sentence is in <code>&lt;div id="myid"&gt;</code>. It is followed by a horizontal rule.</div>
+			        <hr />
+			        <p>This is a paragraph, which means it is wrapped in <code>&lt;p&gt;</code> <span>and</span> <code>&lt;/p&gt;</code>. Those "p" tags in the previous sentence are formatted as <code>&lt;code&gt;</code>.</p>
+			        <ul>
+			            <li>This is the first list item (<code>&lt;li&gt;</code>) in an unordered list (<code>&lt;ul&gt;</code>). </li>
+			            <li>This is the second list item. It has a <a rel="self" title="Learning jQuery blog" href="/archives/jquery-links.htm">link</a> in it.</li>
+			            <li class="myclass otherclass">This is the third list item. It has a <code>class</code> of "myclass otherclass"</li>
+			            <li>This is the fourth list item. It has <strong>strong</strong> text and <em>em</em>phasized <em>text</em>.
+			             <ul>
+			               <li>second-level list item 1</li>
+			               <li>second-level list item 2</li>
+			             </ul>
+			            </li>
+			        </ul>
+			        <p class="myclass"><code>&lt;p class="myclass"&gt;</code>This is another paragraph. It has class="myclass" Otherwise, nothing <strong>special</strong> about it at all.</p>
+					 
+					<p>This is a paragraph, which means it is wrapped in <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code>. Those "p" tags in the previous sentence are formatted as &lt;code&gt;.</p>
+			        <form action="examples_submit" method="get" accept-charset="utf-8">
+			            <div class="left">
+			
+			                <div><input type="text" value="text input" /></div>
+			                <div><input type="text" value="disabled text input" disabled="disabled" /></div>
+			                <div><input type="password" name="password" value="password" /></div>
+			                <div><select>
+			                   <option>select list w/ options</option>
+			                   <option>another option</option>
+			                   <option>a third option</option>
+			                 </select>
+			                </div>
+			            </div>
+			            <textarea class="left" rows="5" cols="20">This is a textarea</textarea>
+						<div><select size="5" style="margin-left:10px">
+			                   <option>select list w/ options</option>
+			                   <option selected="selected">another option</option>
+			                   <option>a third option</option>
+			                </select></div>
+			            <div class="clear-left"><label for="radio1">
+			                <input class="left" name="radiobtn" type="radio" id="radio1" value="checkedradio" checked="checked" />
+			                Radio Checked
+			            </label>
+			            <label class="left clear-left" for="radio2">
+			                <input class="left" id="radio2" name="radiobtn" type="radio" value="not" />
+			                Radio Not Checked
+			            </label>
+			            <label class="left clear-left" for="check1">
+			                <input class="left" id="check1" name="checkbx" type="checkbox" value="checked" checked="checked" />
+			                Checkbox Checked
+			            </label>
+			            <label class="left clear-left" for="check2">
+			                <input class="left" id="check2" name="checkbx" type="checkbox" value="not" />
+			                Checkbox Not Checked
+			            </label>
+			            <label class="left clear-left" for="check3">
+			                <input class="left" id="check3" name="checkbx" type="checkbox" value="not" />
+			                Another checkbox Not Checked
+			            </label>
+			            </div>
+			             
+			            <div class="left clear-left"><input type="submit" value="Submit input" /></div>
+			            <div class="left"><input type="button" value="Button input" /></div>
+			            <div class="left"><input type="reset" value="Reset input" /></div>
+			            <div class="left"><button>Button button</button></div>
+			            <div class="left clear-left"><input type="file" name="fileinput" value="file input" id="fileinput" /></div>              
+			        </form>
+			    </div>
+			</div>
+		</div>
+	</body>
+</html>

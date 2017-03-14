@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>eventsbind</title>
+		<style>
+			.me{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -200px;
+				margin-top: -75px;
+				width: 400px;
+				height: 150px;
+				background-color: #ccc;
+				overflow: auto;
+			}
+			
+			input{
+				border: 1px solid black;
+				font-size: 40px;
+				width: 397px;
+				height: 50px;
+			}
+			
+			button{
+				width: 100%;
+				height: 50px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				//on是用于选中元素绑定事件的函数，有两个参数：绑定事件，回调方法
+				//mouseover为鼠标移动上触发的事件函数
+				$("div").on("mouseover",function(){
+					$("div").css("background-color","lightgreen");
+				});
+				
+				$("div").on("mouseout",function(){
+					//$(this)代表当前触发的事件对象
+					$(this).css("background-color","#ccc");
+				});
+				
+				//按键按下
+				$("input").on("keydown",function(){
+					$(this).css("background-color","lightgray");
+				});
+				//按键抬起
+				$("input").on("keyup",function(){
+					$(this).css("background-color","white");
+					var v = $(this).val();
+					if(v.length == 6)
+						$("button").trigger("click");//触发已经绑定在按钮上的点击事件
+				});
+				
+				//利用one函数为对象绑定一次性事件，只触发一次，click代表按钮的单击事件
+				$("button").one("click",function(){
+					alert("数据已提交");
+				});
+				
+				//利用off()函数解除事件绑定
+				//$("*").off();//如果没有参数，则将所有被选中的元素绑定的事件解除
+				
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div class="me">
+			事件测试案例
+			<input type="text" /><br />
+			<button>提交</button>
+		</div>
+	</body>
+</html>

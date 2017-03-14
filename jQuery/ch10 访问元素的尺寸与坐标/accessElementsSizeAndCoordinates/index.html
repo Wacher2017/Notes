@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>accessElementsSizeAndCoordinates</title>
+		<style>
+			.big{
+				position: absolute;
+				left: 50px;
+				top: 100px;
+				width: 400px;
+				height: 450px;
+				background-color: #ccc;
+				overflow: auto;
+			}
+			.small{
+				margin: 50px; /*外补丁*/
+				padding: 30px;/*内补丁*/
+				border: 20px solid blue;/*边框宽度*/
+				width: 200px; /*内容宽度*/
+				background-color: orange;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				var w = $(".big").width();//用于获取内容的宽度
+				var h =$(".big").height();//用于获取内容的高度
+				console.info("外框内容宽度为：" + w + "，高度为：" + h);
+				
+				var p = $(".big").position();//获取左上角的坐标
+				console.info("外框在左上角定点坐标为：(" + p.left + "," + p.top + ")");
+				
+				console.info("内框的内容尺寸为：(" + $(".small").width() + "," + $(".small").height() + ")");
+				//position是当前节点相对应父节点的位移量，offset用于获取指定组件与窗口之间的距离
+				console.info("内框的坐标为：(" + $(".small").offset().left + "," + $(".small").offset().top + ")");
+				
+				console.info("内框的内部尺寸(不包含边框):(" + $(".small").innerWidth() + "," +  $(".small").innerHeight() + ")");
+				
+				console.info("内框的外部尺寸(不包含外补丁):(" + $(".small").outerWidth() + "," +  $(".small").outerHeight() + ")");
+				
+				console.info("内框的外部尺寸(包含外补丁):(" + $(".small").outerWidth(true) + "," +  $(".small").outerHeight(true) + ")");
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div class="big">
+			<div class="small">
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+				XXXXXXXXXXXXXXXXXXX<br />
+			</div>
+		</div>
+	</body>
+</html>

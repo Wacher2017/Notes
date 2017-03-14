@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Base</title>
+		<!--
+        	作者：sam425@163.com
+        	时间：2016-05-10
+        	描述：jQuery基础入门介绍
+        -->
+		<!-- 利用style完成对页面元素的美化工作 -->
+		<style type="text/css">
+			a{
+				border: 1px solid red;
+				font-size: 28px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<!-- script块中存放了JavaScript代码 -->
+		<script type="text/javascript">
+			//jquery内置对象jQuery
+			//文档就绪函数，用于在页面加载成功后执行指定的代码
+			//通常该函数用于替换window.onload事件，文档就绪函数的执行效率更高
+			jQuery(document).ready(function(){
+				//增加我们想要执行的代码
+				alert("页面加载完成");
+			});
+			
+			//jQuery(fn)是文档就绪函数的简写形式
+			jQuery(function(){
+				alert("页面加载完成");
+			});
+			
+			//jQuery这个内置对象有一个别名，即美元$符号
+			//$=jQuery
+			//简写后的格式是$(fn)
+			$(function(){
+				alert("页面加载完成");
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<a href="#">点我啊1</a>
+			<a href="#">点我啊2</a>
+			<a href="#">点我啊3</a>
+			<a href="#">点我啊4</a>
+			<a href="#">点我啊5</a>
+			<a href="#">点我啊6</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>propertySelector</title>
+		<link rel="stylesheet" href="css/select.css" type="text/css" />
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				//利用属性选择器获取当前页面所有的文本框
+				//$("input[type='text']").css("border", "1px solid red");
+				//利用尾匹配完成对于.com结尾的超链接筛选
+				//$=代表以XXX结尾的情况
+				//$("a[href$='.com']").css("border", "1px solid red");
+				//^=代表头匹配，筛选http://开头的超链接
+				//$("a[href^='http://']").css("border", "1px solid red");
+				//*=代表任意匹配,获取所有value属性中包含input字符串的对象
+				//$("*[value*='input']").css("border", "1px solid red");
+				//在不考虑属性值的情况下，可以直接在中括号内写属性名即可
+				//$("*[rows]").css("border", "1px solid red");
+				//对于多个属性条件同时生效的情况下，我们可以使用多条件筛选，通过加多个[]来实现
+				$("input[type='radio'][checked='checked'],input[type='checkbox'][checked='checked']").css("width", "100px");
+				//多条件筛选
+				$("input[type='text'][disabled='disabled']").css("border", "1px solid red");
+			});
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div class="section">
+				<h1>jQuery 选择器实验室</h1>
+				<div class="domtree">
+					<p style="margin:0;"><small>Original lab by <a href="http://www.learningjquery.com/" target="_blank">Karl Swedberg</a> Enhanced by <a href="http://codylindley.com">Cody Lindley</a>. FYI(ie6 != supported)</small></p>
+					
+					<div id="myid">This sentence is in <code>&lt;div id="myid"&gt;</code>. It is followed by a horizontal rule.</div>
+			        <hr />
+			        <p>This is a paragraph, which means it is wrapped in <code>&lt;p&gt;</code> <span>and</span> <code>&lt;/p&gt;</code>. Those "p" tags in the previous sentence are formatted as <code>&lt;code&gt;</code>.</p>
+			        <ul>
+			            <li>This is the first list item (<code>&lt;li&gt;</code>) in an unordered list (<code>&lt;ul&gt;</code>). </li>
+			            <li>This is the second list item. It has a <a rel="self" title="Learning jQuery blog" href="/archives/jquery-links.htm">link</a> in it.</li>
+			            <li class="myclass otherclass">This is the third list item. It has a <code>class</code> of "myclass otherclass"</li>
+			            <li>This is the fourth list item. It has <strong>strong</strong> text and <em>em</em>phasized <em>text</em>.
+			             <ul>
+			               <li>second-level list item 1</li>
+			               <li>second-level list item 2</li>
+			             </ul>
+			            </li>
+			        </ul>
+			        <p class="myclass"><code>&lt;p class="myclass"&gt;</code>This is another paragraph. It has class="myclass" Otherwise, nothing <strong>special</strong> about it at all.</p>
+					 
+					<p>This is a paragraph, which means it is wrapped in <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code>. Those "p" tags in the previous sentence are formatted as &lt;code&gt;.</p>
+			        <form action="examples_submit" method="get" accept-charset="utf-8">
+			            <div class="left">
+			
+			                <div><input type="text" value="text input" /></div>
+			                <div><input type="text" value="disabled text input" disabled="disabled" /></div>
+			                <div><input type="password" name="password" value="password" /></div>
+			                <div><select>
+			                   <option>select list w/ options</option>
+			                   <option>another option</option>
+			                   <option>a third option</option>
+			                 </select>
+			                </div>
+			            </div>
+			            <textarea class="left" rows="5" cols="20">This is a textarea</textarea>
+						<div><select size="5" style="margin-left:10px">
+			                   <option>select list w/ options</option>
+			                   <option selected="selected">another option</option>
+			                   <option>a third option</option>
+			                </select></div>
+			            <div class="clear-left"><label for="radio1">
+			                <input class="left" name="radiobtn" type="radio" id="radio1" value="checkedradio" checked="checked" />
+			                Radio Checked
+			            </label>
+			            <label class="left clear-left" for="radio2">
+			                <input class="left" id="radio2" name="radiobtn" type="radio" value="not" />
+			                Radio Not Checked
+			            </label>
+			            <label class="left clear-left" for="check1">
+			                <input class="left" id="check1" name="checkbx" type="checkbox" value="checked" checked="checked" />
+			                Checkbox Checked
+			            </label>
+			            <label class="left clear-left" for="check2">
+			                <input class="left" id="check2" name="checkbx" type="checkbox" value="not" />
+			                Checkbox Not Checked
+			            </label>
+			            <label class="left clear-left" for="check3">
+			                <input class="left" id="check3" name="checkbx" type="checkbox" value="not" />
+			                Another checkbox Not Checked
+			            </label>
+			            </div>
+			             
+			            <div class="left clear-left"><input type="submit" value="Submit input" /></div>
+			            <div class="left"><input type="button" value="Button input" /></div>
+			            <div class="left"><input type="reset" value="Reset input" /></div>
+			            <div class="left"><button>Button button</button></div>
+			            <div class="left clear-left"><input type="file" name="fileinput" value="file input" id="fileinput" /></div>              
+			        </form>
+			    </div>
+			</div>
+		</div>
+	</body>
+</html>

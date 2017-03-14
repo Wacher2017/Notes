@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>accessAndSetElements</title>
+		<style>
+			.divstyle{
+				border: 5px solid black;
+				background-color: orange;
+			}
+			.trstyle{
+				background-color: lightblue;
+				color: green;
+			}
+			.trstyle1{
+				font-size: 32px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				/****************************访问与设置元素属性**************************/
+				//1.设置百度超链接地址,attr()函数是设置或获取指定属性的内容
+				//attr()函数并不是JavaScript自带函数，而是jQuery进行扩展的函数
+				//使用attr函数设置属性的时候需要两个参数：参数名，参数值
+				$("#abaidu").attr("href","http://www.baidu.com");
+			
+				//2.将图片显示为“1.jpg”，提示信息为“熊猫盼盼”，宽度为300像素
+				//$("img:first").attr("src","img/1.jpg");
+				//$("img:first").attr("alt","熊猫盼盼");
+				//$("img:first").attr("width","300");
+				//要设置多个值的时候，参数不在是参数名\参数值，而是一个json对象
+				//$("img:first").attr({"src":"img/1.jpg","alt":"熊猫盼盼","width":"300"});
+				
+				//3.得到第二张图片的文件名,只传递一个属性值参数，代表获取该属性值
+				//var s = $("img:eq(1)").attr("src");
+				//alert(s);
+				
+				//4.将页面中所有复选框选中,仍时有attr，如果选择器中选择了多个对象，那么attr函数会自动为其每一个对象进行设置
+				//$("input[type='checkbox']").attr("checked","checked");
+				//$("input[type='checkbox']:eq(0),input[type='checkbox']:eq(3)").attr("checked","checked");
+				//5.如果在前面选择器中选取了多个元素的话，获取的属性值只会是第一个元素的内容
+				//alert($("a").attr("href"));
+				
+				/****************************访问与设置元素内容**************************/
+				//设置内容
+				$("#divHTML").html("<b>Nice to meet U!</b>");
+				$("#divText").text("<b>Nice to meet U!</b>");
+				//获取内容
+				//alert($("#divHTML").html());
+				//alert($("#divHTML").text());
+				
+				//
+				//$("#txtUsername").attr("value","hahaha");
+				$("#txtUsername").val("hahaha");//与上边等价，更简单
+				//alert($("#txtUsername").val());
+				
+				//利用数组一次性设置多个值
+				$("#mselect").val(["a","c"]);
+				/****************************访问与设置元素样式**************************/
+				//1.设置单元格的宽度为100px
+				//$("td").css("width","100px");//css函数用于设置或获取指定的css属性
+				//2.将单元格字号设置为20像素，字色变成红色，且拥有黑色边框
+				//$("td").css("font-size","20px");
+				//$("td").css("color","red");
+				//$("td").css("border","1px solid black");
+				//$("td").css({"font-size":"20px","color":"red","border":"1px solid black"});
+				
+				//3.在浏览器控制台显示DIV元素的背景色属性值,利用css函数进行获取
+				//var bg = $("#divstyle").css("background-color");//如果只有属性名，获取属性值，如果为多个属性名，则返回第一个属性值
+				//console.log(bg);
+				
+				//4.设置斑马隔行背景色变成亮蓝色，字色变成黑色
+				//为所选组件设置css类,如果同时设置多个css类，只需要在多个类名之间增加空格分隔即可
+				//$("tr:odd").addClass("trstyle trstyle1");
+				
+				//5.移除DIV所有的CSS类,如果不传递参数，则移出所有
+				//$("#divstyle").removeClass("divstyle");
+			});
+		</script>
+	</head>
+	<body>
+		<h3>访问与设置元素属性</h3>
+		<a id="abaidu" href="#">百度</a>
+		<a href="http://www.sina.com">新浪</a>
+		<a href="http://www.yahoo.com">雅虎</a>
+		<a href="http://www.sohu.com">搜狐</a>
+		<a href="http://www.163.com">网易</a>
+		<br />
+		<img />熊猫盼盼
+		<img src="img/2.jpg" width="200" />蜗牛爬爬
+		<br />
+		<input type="checkbox" name="letter" value="A" />A
+		<input type="checkbox" name="letter" value="B" />B
+		<input type="checkbox" name="letter" value="C" />C
+		<input type="checkbox" name="letter" value="D" />D
+		<input type="checkbox" name="letter" value="E" />E
+		<br />
+		
+		<h3>访问与设置元素内容</h3>
+		<div id="divHTML"></div>
+		<div id="divText"></div>
+		<input id="txtUsername" type="text" value="" />
+		<select id="mselect" multiple="multiple">
+			<option value="a">A</option>
+			<option value="b">B</option>
+			<option value="c">C</option>
+		</select>
+		<br />
+		
+		<h3>访问与设置元素样式</h3>
+		<div id="divstyle" class="divstyle">
+			<table>
+				<tr><td>用户名1</td><td>密码1</td></tr>
+				<tr><td>用户名2</td><td>密码2</td></tr>
+				<tr><td>用户名3</td><td>密码3</td></tr>
+				<tr><td>用户名4</td><td>密码4</td></tr>
+				<tr><td>用户名5</td><td>密码5</td></tr>
+				<tr><td>用户名6</td><td>密码6</td></tr>
+				<tr><td>用户名7</td><td>密码7</td></tr>
+				<tr><td>用户名8</td><td>密码8</td></tr>
+				<tr><td>用户名9</td><td>密码9</td></tr>
+				<tr><td>用户名10</td><td>密码10</td></tr>
+			</table>
+		</div>
+	</body>
+</html>
