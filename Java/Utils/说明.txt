@@ -1,0 +1,2 @@
+1、BugMeNot.java【判断基本类型和包装类及一个类型是Java本身类型还是用户自定义类型以及包装类】
+2. ContrastObj.java【Java比较两个对象属性值变化情况，用于记录日志使用】
