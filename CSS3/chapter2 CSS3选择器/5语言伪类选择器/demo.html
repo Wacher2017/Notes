@@ -1,10 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
+<!-- <html lang="en-US"> -->
  <head>
   <meta charset="UTF-8">
   <title>语言伪类选择器</title>
   <style type="text/css">
-
+    /*英文（en-US）版本的引文q效果*/
+    :lang(en){
+      quotes: '"' '"';
+    }
+    :lang(en) q {background: red;}
+    /*法文（fr）版本的引文q效果*/
+    :lang(fr){
+      quotes: '《' '》';
+    }
+    :lang(fr) q {background: green;}
   </style>
  </head>
  <body>
