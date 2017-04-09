@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>动态伪类选择器</title>
+  <style type="text/css">
+  table {
+       border-collapse: collapse;
+       font-family: Futura, Arial, sans-serif;
+  }
+  caption {
+       font-size: larger;
+       margin: 1em auto;
+  }
+  th,td {
+       padding: .65em;
+  }
+  th {
+       background: #555 none repeat scroll 0 0;
+     /* border: 1px solid #777; */
+     color: #fff;
+  }
+  td {
+      /* border: 1px solid #777; */
+  }
+  tbody tr:nth-child(odd) {
+       background: #ccc;
+  }
+  th:first-child {
+       border-radius: 9px 0 0 0;
+  }
+  th:last-child {
+       border-radius: 0 9px 0 0;
+  }
+  tr:last-child td:first-child {
+       border-radius: 0 0 0 9px;
+  }
+  tr:last-child td:last-child {
+       border-radius: 0 0 9px 0;
+  }
+  </style>
+ </head>
+ <body>
+    <table>
+      <caption>American Film Institute’s Top Five Films</caption>
+      <thead>
+        <tr>
+          <th>Position
+          <th>Movie
+          <th>Year of Release
+      </thead>
+      <tbody>
+        <tr>
+          <td>1
+          <td>Citizen Kane
+          <td>1941
+          <tr>
+          <td>2
+          <td>The Godfather
+          <td>1972
+        <tr>
+          <td>3
+          <td>Casablanca
+          <td>1942
+        <tr>
+          <td>4
+          <td>Raging Bull
+          <td>1980
+        <tr>
+          <td>5
+          <td>Singin’ In The Rain
+          <td>1952
+      </tbody>
+    </table>
+ </body>
+</html>
