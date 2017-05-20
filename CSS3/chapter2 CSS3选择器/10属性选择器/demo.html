@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>属性选择器</title>
+  <style type="text/css">
+    .demo{
+      width: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow: hidden;
+      margin: 20px auto;
+    }
+    .demo a {
+      float: left;
+      display: block;
+      height: 50px;
+      width: 50px;
+      border-radius: 10px;
+      text-align: center;
+      background: #aac;
+      color: blue;
+      font: bold 20px/50px Arial;
+      margin-right: 5px;
+      text-decoration: none;
+      margin: 5px;
+    }
+    /**
+     * 1.E[attr]属性选择器
+     * 可以多属性
+     */
+     /*a[id] {background-color: yellow;}
+     a[id][title] {background-color: red;}*/
+     /**
+      * 2.E[attr=val]属性选择器
+      * 属性和属性值必须完全匹配
+      */
+     /*a[id = first] {background-color: red;}*/
+     /**
+      * 3.E[attr|=val]属性选择器
+      * 匹配属性值等于val 或者以var-开头是所有字符串属性的元素
+      */
+     /*a[lang |= zh] {background-color: yellow;}*/
+     /**
+      * 4.E[attr~=val]属性选择器
+      */
+     /*a[title ~= website] {background-color: yellow;}*/
+     /**
+      * 5.E[attr*=val]属性选择器
+      */
+     /*a[class *= links] {background-color: yellow;}*/
+     /**
+      * 6.E[attr^=val]属性选择器
+      */
+     /*a[href ^= http] {background-color: yellow;}*/
+     /**
+      * 7.E[attr$=val]属性选择器
+      */
+     a[href $= png] {background-color: yellow;}
+
+  </style>
+ </head>
+ <body>
+   <div class="demo">
+     <a href="http://www.w3cplus.com" target="_blank" class="links active item first" id="first" title="w3cplus">1</a>
+     <a href="" class="links active item" title="test website" target="_blank" lang="zh">2</a>
+     <a href="sites/file/test.html" class="links item" title="this is a link" lang="zh-cn">3</a>
+     <a href="sites/file/test.png" class="links item" target="_blank" lang="zh-tw">4</a>
+     <a href="sites/file/image.jpg" class="links item" title="zh-cn">5</a>
+     <a href="mailto:w3cplus@hotmail" class="links item" title="website link" lang="zh">6</a>
+     <a href="/a.pdf" class="links item" title="open the website" lang="cn">7</a>
+     <a href="/abc.pdf" class="links item" title="close the website" lang="en-zh">8</a>
+     <a href="abcde.doc" class="links item" title="http://www.sina.com">9</a>
+     <a href="abd.doc" class="linksitem last" id="last">10</a>
+   </div>
+ </body>
+</html>
