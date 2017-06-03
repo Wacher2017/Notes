@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>border-radius制作特殊图形</title>
+    <style type="text/css">
+      /*制作圆形*/
+      .circle {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        border-radius: 50%;
+      }
+      /*制作半圆形*/
+      .semicircle {
+        background-color: orange;
+        margin: 30px;
+      }
+      .s-top {
+        width: 100px;
+        height: 50px;
+        border-radius: 50px 50px 0 0;
+      }
+      .s-right {
+        width: 50px;
+        height: 100px;
+        border-radius: 0 50px 50px 0;
+      }
+      .s-bottom {
+        width: 100px;
+        height: 50px;
+        border-radius: 0 0 50px 50px;
+      }
+      .s-left {
+        width: 50px;
+        height: 100px;
+        border-radius: 50px 0 0 50px;
+      }
+      /*制作扇形*/
+      .quarterCircle {
+        background-color: orange;
+        margin: 30px;
+      }
+      .q-top {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px 0 0 0;
+      }
+      .q-right {
+        width: 100px;
+        height: 100px;
+        border-radius: 0 100px 0 0;
+      }
+      .q-bottom {
+        width: 100px;
+        height: 100px;
+        border-radius: 0 0 100px 0;
+      }
+      .q-left {
+        width: 100px;
+        height: 100px;
+        border-radius: 0 0 0 100px;
+      }
+      /*制作椭圆*/
+      .oval {
+        background-color: orange;
+        margin: 30px;
+      }
+      .hov {
+        width: 100px;
+        height: 50px;
+        border-radius: 100px / 50px;
+      }
+      .ver {
+        width: 50px;
+        height: 100px;
+        border-radius: 50px / 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="circle"></div>
+
+    <div class="semicircle s-top"></div>
+    <div class="semicircle s-right"></div>
+    <div class="semicircle s-bottom"></div>
+    <div class="semicircle s-left"></div>
+
+    <div class="quarterCircle q-top"></div>
+    <div class="quarterCircle q-right"></div>
+    <div class="quarterCircle q-bottom"></div>
+    <div class="quarterCircle q-left"></div>
+
+    <div class="oval hov"></div>
+    <div class="oval ver"></div>
+  </body>
+</html>
