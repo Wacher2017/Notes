@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>简易年历</title>
+	<style type="text/css">
+		#div1 {
+			width: 200px;
+			height: 150px;
+			border: 1px solid black;
+		}
+
+		*{margin: 0px;padding: 0px;}
+	    body{padding: 100px;font-size: 13px;}
+	    li{list-style: none;}
+	    .calendar{width: 294px;background-color: #eaeaea;overflow: hidden;}
+	    .calendar ul{padding: 5px;overflow: hidden;}
+	    .calendar ul li{float: left;width: 59px;height: 59px;background-color: #424242;margin: 5px;text-align: center;color: #fff;border: 1px solid #424242;cursor: pointer;}
+	    .calendar ul li h2{height: 30px;line-height: 30px;}
+	    .calendar ul li span{display: block;height: 30px;line-height: 30px;}
+	    .calendar ul li.active{color: #ff6699;background-color: #fff;border: 1px solid #424242;}
+	    .calendar ul li.active h2{}
+	    .calendar ul li.active span{}
+	    .calendar .text{background-color: #f1f1f1;color: #666666;margin: 10px;border: 1px solid #fff;padding-left: 5px;}
+	    .calendar .text h2{font-size: 14px;height: 30px;line-height: 30px;}
+	    .calendar .text p{height: 24px;line-height: 24px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var oTxt = document.getElementById('txt1');
+			var oBtn = document.getElementById('btn1');
+			var oDiv = document.getElementById('div1');
+
+			oBtn.onclick = function() {
+				oDiv.innerHTML = oTxt.value;
+			}
+
+			var oTab = document.getElementById('tab');
+			var aLi = oTab.getElementsByTagName('li');
+			var oText = oTab.getElementsByTagName('div')[0];
+			var arr = [
+				'春山处处行应好,一月看花到几峰。',
+				'二月春风似剪刀',
+				'烟花三月下扬州',
+				'人间四月芳菲尽',
+				'五月榴花照眼明',
+				'六月荷花香满湖',
+				'七月七日长生殿',
+				'八月秋高风怒好',
+				'可怜九月初三夜',
+				'十月芙蓉花满枝',
+				'江城山寺十一月',
+				'日脚淡光红洒洒，薄霜不销桂枝下。'
+			];
+
+			for (var i = aLi.length - 1; i >= 0; i--) {
+				aLi[i].index = i;
+				aLi[i].onmouseover = function() {
+					for (var i = aLi.length - 1; i >= 0; i--) {
+						aLi[i].className = '';
+					}
+					this.className = 'active';
+					oText.innerHTML = '<h2>' + (this.index+1) + '月活动</h2><p>' + arr[this.index] + '</p>'
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="txt1" type="text">
+	<input id="btn1" type="button" value="设置文字" />
+	<div id="div1"></div>
+
+	<div id="tab" class="calendar">
+		<ul>
+			<li class="active"><h2>1</h2><p>JAN</p></li>
+			<li><h2>2</h2><p>FRE</p></li>
+			<li><h2>3</h2><p>MAR</p></li>
+			<li><h2>4</h2><p>APR</p></li>
+			<li><h2>5</h2><p>MAY</p></li>
+			<li><h2>6</h2><p>JUN</p></li>
+			<li><h2>7</h2><p>JUL</p></li>
+			<li><h2>8</h2><p>AUG</p></li>
+			<li><h2>9</h2><p>SEP</p></li>
+			<li><h2>10</h2><p>OCT</p></li>
+			<li><h2>11</h2><p>NOV</p></li>
+			<li><h2>12</h2><p>DEC</p></li>
+		</ul>
+		<div class="text">
+			<h2>1月活动</h2>
+			<p>春山处处行应好,一月看花到几峰。</p>
+		</div>
+	</div>
+</body>
+</html>

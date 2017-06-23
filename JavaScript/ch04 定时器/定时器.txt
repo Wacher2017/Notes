@@ -1,0 +1,14 @@
+1、定时器作用
+  ·开启定时器
+    ·setInterval   间隔型
+    ·setTimeout    延时型
+    ·两种定时器的区别
+  ·停止定时器
+    ·clearInterval
+    ·clearTimeout
+
+ 2、数码时钟
+
+ 3、延时提示框
+
+ 4、无缝滚动

@@ -1,0 +1,4 @@
+前边：HTML里怎么写，JS里就怎么写
+但是一个属性例外，class样式
+因为class是一个关键字
+故需要className来代替

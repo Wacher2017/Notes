@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>数组</title>
+	<script type="text/javascript">
+		var arr =  [1, 2, 3, 4, 5, 6];
+		//var arr = new Array(1, 2, 3, 4, 5, 6);
+
+		//alert(arr.length);
+
+		//arr.push(4); //尾部添加
+		//alert(arr);
+
+		//arr.pop(); //尾部删除
+		//alert(arr);
+
+		//arr.shift(); //头部删除
+		//alert(arr);
+
+		//arr.unshift(5); //头部添加
+		//alert(arr);
+
+		//arr.splice(2, 3); //删除：splice(启点, 长度)
+		//alert(arr);
+
+		//arr.splice(2, 0, a, b, c); //插入：splice(启点, 长度, 元素...)
+		//alert(arr);
+
+		//arr.splice(2, 2, a, b); //替换：splice(启点, 长度, 元素...)
+		//alert(arr);
+
+		//var b = [7, 8, 9];
+		//alert(arr.concat(b)); //连接
+
+		//alert(arr.join('-')); //拼接
+
+		//var c = ['Heat', 'Alarm', 'Zoom', 'Good', 'Pop'];
+		//alert(c.sort());
+		var d = [12, 8, 99, 19, 112];
+		alert(d.sort(function(n1, n2){
+			return n1 - n2;
+		}));
+	</script>
+</head>
+<body>
+
+</body>
+</html>

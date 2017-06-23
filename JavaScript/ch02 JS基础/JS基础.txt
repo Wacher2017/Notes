@@ -1,0 +1,38 @@
+1、JavaScript组成
+  ·ECMAScript：解释器、翻译   （几乎没有兼容性问题）
+  ·DOM：Document Object Model （document 有一些操作不兼容）
+  ·BOM：Browser Object Model  （window 没有兼容性问题【完全不兼容】）
+    ·各组成部分的兼容性，兼容性问题由来
+
+2、变量类型
+  ·类型：typeof运算符
+    ·用法，返回值
+    ·常见类型：number、string、undefined、object、function
+  ·一个变量应该只存放一种类型的数据
+  ·数据类型转换
+    ·显式类型转换（强制类型转换）
+       ·parseInt()、parseFloat()
+       ·NaN的意义和检测
+    ·隐式类型转换
+       ·==、 ===
+       ·减法
+
+3、变量作用域和闭包
+  ·全局变量、局部变量
+  ·闭包 ————子函数可以使用父函数的局部变量
+
+4、命名规范
+
+5、运算符
+  ·算术：+加、-减、*乘、/除、%取模
+  ·赋值：=、+=、-=、*=、/=、%=
+  ·关系：<、>、<=、>=、==、===、!=、!==
+  ·逻辑：&&与、||或、!否
+  ·运算符优先级：括号
+
+6、程序控制流程
+  ·判断：if、switch、?:
+  ·循环：while、for
+  ·跳出：break、continue
+
+7、Json
