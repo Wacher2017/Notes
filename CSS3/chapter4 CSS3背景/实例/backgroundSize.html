@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>background-size</title>
+    <style type="text/css">
+      div {
+        float: left;
+        width: 300px;
+        height: 200px;
+        border: 1px solid red;
+        background: url(bg.png) no-repeat;
+      }
+      .auto {
+        background-size: auto;
+      }
+      .percentage {
+        background-size: 50% 80%;
+      }
+      .cover {
+          background-size: cover;
+      }
+      .contain {
+          background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div class="auto"></div>
+    <div class="percentage"></div>
+    <div class="cover"></div>
+    <div class="contain"></div>
+  </body>
+<html>

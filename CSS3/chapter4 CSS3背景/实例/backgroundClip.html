@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>background-clip</title>
+    <style type="text/css">
+      div {
+        float: left;
+        width: 300px;
+        height: 200px;
+        border: 20px dashed rgba(0, 0, 0, 0.3);
+        background: orange url(bg.png) no-repeat left top;
+        padding: 20px;
+        margin: 30px;
+      }
+      .border-box {
+        -webkit-background-clip: border-box;
+        -moz-background-clip: border-box;
+        -o-background-clip: border-box;
+        -ms-background-clip: border-box;
+        background-clip: border-box;
+      }
+      .padding-box {
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding-box;
+        -o-background-clip: padding-box;
+        -ms-background-clip: padding-box;
+        background-clip: padding-box;
+      }
+      .content-box {
+        -webkit-background-clip: content-box;
+        -moz-background-clip: content-box;
+        -o-background-clip: content-box;
+        -ms-background-clip: content-box;
+        background-clip: content-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div class="border-box"></div>
+    <div class="padding-box"></div>
+    <div class="content-box"></div>
+  </body>
+<html>
