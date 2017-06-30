@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM应用</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			/**
+			 * 创建/插入元素
+			 */
+			var oBtn = document.getElementById('btn1');
+			var oUl = document.getElementById('ul1');
+			var oTxt = document.getElementById('txt1');
+
+			oBtn.onclick = function() {
+				var oLi = document.createElement('li');
+				var aLi = oUl.getElementsByTagName('li');
+				oLi.innerHTML = oTxt.value;
+				//父级.appendChild(子节点)
+				//oUl.appendChild(oLi); //添加到末尾
+				if(aLi.length > 0) {
+					oUl.insertBefore(oLi, aLi[0]); //添加到指定位置之前
+				} else {
+					oUl.appendChild(oLi); //添加到末尾
+				}			
+			}
+
+			/**
+			 * 删除元素
+			 */
+			var oUl2 = document.getElementById('ul2');
+			var aA = oUl2.getElementsByTagName('a');
+			for (var i = 0; i < aA.length; i++) {
+				aA[i].onclick = function() {
+					oUl2.removeChild(this.parentNode);
+				}
+			}
+
+			/**
+			 * 文档碎片(基本不用了)
+			 */
+			var oUl3 = document.getElementById('ul3');
+			var oFrag = document.createDocumentFragment();
+			for (var i = 0; i < 10000; i++) {
+				var oLi = document.createElement('li');
+				oFrag.appendChild(oLi);
+			}
+			oUl3.appendChild(oFrag);
+		}
+	</script>
+</head>
+<body>
+	<input id="txt1" type="text">
+	<input id="btn1" type="button" value="创建">
+	<ul id="ul1"></ul>
+
+	<ul id="ul2">
+		<li>dfafasadf<a href="javascript:;">删除</a></li>
+		<li>ffadsfa<a href="javascript:;">删除</a></li>
+		<li>dfaafdasfasadf<a href="javascript:;">删除</a></li>
+		<li>gfsfdgs<a href="javascript:;">删除</a></li>
+		<li>52345gfsw<a href="javascript:;">删除</a></li>
+	</ul>
+
+	<ul id="ul3"></ul>
+</body>
+</html>

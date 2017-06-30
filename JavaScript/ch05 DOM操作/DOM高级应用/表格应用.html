@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表格应用</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			var oTab = document.getElementById('tab1');			
+			//alert(oTab.getElementsByTagName('tbody')[0].getElementsByTagName('tr')[1].getElementsByTagName('td')[1].innerHTML);
+			//alert(oTab.tBodies[0].rows[1].cells[1].innerHTML); //便捷操作
+
+			//隔行变色
+			var oldColor = '';
+			for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+				//鼠标移入高亮显示
+				oTab.tBodies[0].rows[i].onmouseover = function() {
+					oldColor = this.style.background;
+					this.style.background = 'green';
+				}
+				//鼠标移出恢复
+				oTab.tBodies[0].rows[i].onmouseout = function() {
+					this.style.background = oldColor;
+				}
+				if(i%2) {
+					oTab.tBodies[0].rows[i].style.background = '';
+				} else {
+					oTab.tBodies[0].rows[i].style.background = '#ccc';
+				}				
+			}
+
+			//添加、删除
+			var oBtn = document.getElementById('btn1');
+			var oName = document.getElementById('name');
+			var oAge = document.getElementById('age');
+			var id = oTab.tBodies[0].rows.length + 1;
+			oBtn.onclick = function() {
+				var oTr = document.createElement('tr');
+				var oTd = document.createElement('td');
+				oTd.innerHTML = id++;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = oName.value;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = oAge.value;
+				oTr.appendChild(oTd);
+
+				var oTd = document.createElement('td');
+				oTd.innerHTML = '<a href="javascript:;">删除</a>';
+				oTr.appendChild(oTd);
+
+				oTd.getElementsByTagName('a')[0].onclick = function() {
+					oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+
+				oTab.tBodies[0].appendChild(oTr);
+			}
+
+			//搜索
+			var oBtnS = document.getElementById('btn2');
+			var oNameS = document.getElementById('nameSearch');
+			oBtnS.onclick = function() {
+				for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+					var sTab = oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+					var sTxt = oNameS.value.toLowerCase();
+					var sArr = sTxt.split(' ');
+					oTab.tBodies[0].rows[i].style.background = '';
+					for (var j = 0; j < sArr.length; j++) {
+						if(sTab.search(sArr[j]) != -1) {
+							oTab.tBodies[0].rows[i].style.background = 'yellow';
+						}
+					}
+				}
+			}
+
+			//排序
+			var oBtn3 = document.getElementById('btn3');
+			oBtn3.onclick = function() {
+				var arr = [];
+				for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+					arr[i] = oTab.tBodies[0].rows[i]
+				}
+				arr.sort(function(tr1, tr2) {
+					var n1 = parseInt(tr1.cells[0].innerHTML);
+					var n2 = parseInt(tr2.cells[0].innerHTML);
+					return n1 - n2;
+				});
+				for (var i = 0; i < arr.length; i++) {
+					oTab.tBodies[0].appendChild(arr[i]);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	姓名：<input id="name" type="text"/>
+	年龄：<input id="age" type="text"/>
+	<input id="btn1" type="button" value="添加"/>
+	<br/>
+	姓名：<input id="nameSearch" type="text"/>
+	<input id="btn2" type="button" value="搜索"/>
+	<br/>
+	<input id="btn3" type="button" value="排序"/>
+	<table id="tab1" border="1" width="500">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>			
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>Blue</td>
+				<td>29</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>张三</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>李四</td>
+				<td>24</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>王五</td>
+				<td>22</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>赵六</td>
+				<td>28</td>
+				<td>删除</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>小五</td>
+				<td>10</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
