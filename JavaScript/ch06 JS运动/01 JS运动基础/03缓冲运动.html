@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>缓冲运动</title>
+	<style type="text/css">
+		#div1 {width: 100px;height: 100px;background: red;position: absolute;top: 50px;left: 0px;}
+		#div2 {width: 1px;height: 300px;background: black;position: absolute;top: 0px;left: 300px;}
+	</style>
+	<script type="text/javascript">
+		/**
+		 * 实现缓冲运动
+		 * div1的初始left值为0像素
+		 * 存在问题1：不能正好停在div2标尺好的位置（速度取整导致的）
+		 */
+		/*function startMove() {
+			var oDiv = document.getElementById('div1');
+			setInterval(function() {
+				var speed = (300 - oDiv.offsetLeft)/10;
+				oDiv.style.left = oDiv.offsetLeft + speed + 'px';				
+			}, 30);
+		}*/
+
+		/**
+		 * 解决1问题：速度向上取整（Math.ceil(speed)）
+		 * 存在问题2：如果div1的初始left值为600像素，则向左运动，
+		 * 经过速度向上取整后又会出现不能正好停在div2标尺好的位置
+		 */
+		/*function startMove() {
+			var oDiv = document.getElementById('div1');
+			setInterval(function() {
+				var speed = (300 - oDiv.offsetLeft)/10;
+				speed = Math.ceil(speed);
+				oDiv.style.left = oDiv.offsetLeft + speed + 'px';				
+			}, 30);
+		}*/
+
+		/**
+		 * 解决2问题：速度向下取整（Math.floor(speed)）
+		 * 综合问题1，通过判断实现
+		 */
+		function startMove() {
+			var oDiv = document.getElementById('div1');
+			setInterval(function() {
+				var speed = (300 - oDiv.offsetLeft)/10;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				oDiv.style.left = oDiv.offsetLeft + speed + 'px';				
+			}, 30);
+		}
+	</script>
+</head>
+<body>
+	<input id="btn1" type="button" value="开始运动" onclick="startMove()">
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>
