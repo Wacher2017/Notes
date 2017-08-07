@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>土豆网右下角菜单悬浮效果</title>
+	<link rel="stylesheet" type="text/css" href="css/tudou.css">
+	<script type="text/javascript" src="js/move.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			var oBtn=document.getElementById('but');
+			var oBottom=document.getElementById('miaov_bottom');
+			var oBox=document.getElementById('miaov_box');
+			var oBtnClose=document.getElementById('btn_close');
+			
+			oBtn.onclick=function ()
+			{
+				startMove(oBottom, 'right', 0, function () {
+					oBox.style.display='block';
+					startMove(oBox, 'bottom', 0);
+				});
+			};
+			oBtnClose.onclick=function ()
+			{
+				startMove(oBox, 'bottom', -315, function () {
+					oBox.style.display='none';
+					startMove(oBottom, 'right', -165);
+				});
+			};
+		}
+	</script>
+</head>
+<body>
+	<div class="page">
+		<div id="miaov_bottom">
+			<ul id='nav'>
+				<li><a href="###"></a></li>
+				<li class='li_1'><a href="###"></a></li>       
+				<li class='li_2'><a href="###"></a></li>       
+				<li class='li_3'><a href="###"></a></li>       
+				<li class='li_4'><a href="###"></a></li>      
+			</ul>
+			<h2 class="miaov">一流素材网 16sucai.com</h2>
+		</div>
+		<a class="but_show" id="but" href="###"></a>
+		<div id="miaov_box">
+			<div class="bg"></div>
+			<div class="nav2_bg"></div>
+			<ul id="list_nav">       
+				<li><a  class="show" href="http://www.16sucai.com" target="_blank">天气</a></li>
+				<li class="tab2"><a href="http://www.16sucai.com" target="_blank">星座</a></li>
+				<li class="tab3"><a href="http://www.16sucai.com" target="_blank">排行</a></li>
+				<li class="tab4"><a href="http://www.16sucai.com" target="_blank">热点</a></li>
+				<li class="tab5"><a href="http://www.16sucai.com" target="_blank">直播</a></li>
+			</ul>
+			<a class='clos' id="btn_close"></a>
+			<div class="box_right">  
+				<div>北京</div>      
+				<div>    
+					<div>     
+						<strong><em>今天</em> (周二)</strong>           
+						<img title="晴" src="images/01.gif" class="pic">         
+					</div>    
+					<span>-1~10C°</span>
+					<span>晴</span>
+					<span>微风小于3级</span>   
+				</div>      
+				<div >    
+					<div>     
+						<strong><em>明天</em> (周三)</strong>           
+						<img title="多云" src="images/02.gif" class="pic">         
+					</div>    
+					<span>0~11C°</span>
+					<span>多云</span>
+					<span>北风3-4级</span>   
+				</div>      
+				<div>    
+					<div>     
+						<strong><em>后天</em> (周四)</strong>           
+						<img title="晴" src="images/01.gif" class="pic">         
+					</div>    
+					<span>-1~12C°</span>
+					<span>晴</span>
+					<span>北风3-4级 转 微风小于3级</span>   
+				</div>     
+		  	</div>
+	  	</div>
+	</div> 
+</body>
+</html>
