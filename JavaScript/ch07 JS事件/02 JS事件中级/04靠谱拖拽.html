@@ -22,13 +22,9 @@
           var t = oEvent.clientY - disY;
           if(l < 0) {
             l = 0;
-          } else if(l > document.documentElement.clientWidth - oDiv.offsetWidth) {
-            l = document.documentElement.clientWidth - oDiv.offsetWidth;
-          }
+          } else if(l > document.documentElement.clientWidth)
           if(t < 0) {
             t = 0;
-          } else if(t > document.documentElement.clientHeight - oDiv.offsetHeight) {
-            t = document.documentElement.clientHeight - oDiv.offsetHeight;
           }
           oDiv.style.left = l + 'px';
           oDiv.style.top = t + 'px';
