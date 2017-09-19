@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>靠谱拖拽</title>
+	<title>事件捕获拖拽</title>
   <style>
     #div1 {width: 200px; height: 200px; background: red;position: absolute;}
   </style>
@@ -18,7 +18,18 @@
 				//鼠标的纵坐标减去div的offsetTop
         disY = oEvent.clientY-oDiv.offsetTop;
 
-        document.onmousemove = function(ev) {
+        if(oDiv.setCapture) { //IE
+          oDiv.onmousemove = mouseMove;
+          oDiv.onmouseup = mouseUp;
+
+          //事件捕获 解决IE低版本拖拽选中文件等问题
+          oDiv.setCapture();
+        } else { //Chrome FF
+          oDiv.onmousemove = mouseMove;
+          oDiv.onmouseup = mouseUp;
+        }
+
+        function mouseMove(ev) {
           var oEvent = ev || event;
           var l = oEvent.clientX - disX;
           var t = oEvent.clientY - disY;
@@ -37,18 +48,26 @@
           oDiv.style.top = t + 'px';
         }
 
-        document.onmouseup = function() {
-					//清空document的事件
-          document.onmousemove = null;
-          document.onmouseup = null;
+        function mouseUp() {
+          //清空document的事件
+          this.onmousemove = null;
+          this.onmouseup = null;
+          if(oDiv.releaseCapture) {
+            oDiv.releaseCapture()
+          }
         }
+
 				//解决低版本火狐bug，干掉系统默认
-        return false;
+        return false; //chrome FF IE9
       }
     }
   </script>
 </head>
 <body>
-  <div id="div1"></div>
+  asdgadgasdga<br />
+  fasdfadsgfadsfa
+  <div id="div1">adfafasdefawe</div>
+  asdgadgasdga<br />
+  fasdfadsgfadsfa
 </body>
 </html>

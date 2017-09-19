@@ -2,9 +2,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>靠谱拖拽</title>
+	<title>虚框拖拽</title>
   <style>
     #div1 {width: 200px; height: 200px; background: red;position: absolute;}
+    .box {border: 1px dashed black; position: absolute;}
   </style>
   <script>
     window.onload = function() {
@@ -17,6 +18,16 @@
         disX = oEvent.clientX-oDiv.offsetLeft;
 				//鼠标的纵坐标减去div的offsetTop
         disY = oEvent.clientY-oDiv.offsetTop;
+
+        //创建虚框div
+        var oBox = document.createElement('div');
+        oBox.className = 'box';
+        oBox.style.width = oDiv.offsetWidth-2 + 'px';
+        oBox.style.height = oDiv.offsetHeight-2 + 'px';
+        oBox.style.left=oDiv.offsetLeft+'px';
+		    oBox.style.top=oDiv.offsetTop+'px';
+
+        document.body.appendChild(oBox);
 
         document.onmousemove = function(ev) {
           var oEvent = ev || event;
@@ -33,14 +44,19 @@
           } else if(t > document.documentElement.clientHeight - oDiv.offsetHeight) {
 						t = document.documentElement.clientHeight - oDiv.offsetHeight;
 					}
-          oDiv.style.left = l + 'px';
-          oDiv.style.top = t + 'px';
+          oBox.style.left = l + 'px';
+          oBox.style.top = t + 'px';
         }
 
         document.onmouseup = function() {
 					//清空document的事件
           document.onmousemove = null;
           document.onmouseup = null;
+          //跟随
+          oDiv.style.left = oBox.offsetLeft + 'px';
+          oDiv.style.top = oBox.offsetTop + 'px';
+          //移出虚框
+          document.body.removeChild(oBox);
         }
 				//解决低版本火狐bug，干掉系统默认
         return false;

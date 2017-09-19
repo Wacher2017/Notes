@@ -2,46 +2,45 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>靠谱拖拽</title>
+	<title>自定义滚动条</title>
   <style>
-    #div1 {width: 200px; height: 200px; background: red;position: absolute;}
+    #parent {width: 600px; height: 20px; background: #CCC;position: relative; margin: 10px auto;}
+    #div1 {width: 20px; height: 20px; background: red; position: absolute; left: 0; top: 0;}
+    #div2 {width: 0px; height: 0px; background: green;}
   </style>
   <script>
     window.onload = function() {
+      var oParent = document.getElementById('parent');
       var oDiv = document.getElementById('div1');
+      var oDiv2 = document.getElementById('div2');
       var disX = 0;
-      var disY = 0;
       oDiv.onmousedown = function(ev) {
         var oEvent = ev || event;
 				 //鼠标的横坐标减去div的offsetLeft
         disX = oEvent.clientX-oDiv.offsetLeft;
-				//鼠标的纵坐标减去div的offsetTop
-        disY = oEvent.clientY-oDiv.offsetTop;
 
         document.onmousemove = function(ev) {
           var oEvent = ev || event;
           var l = oEvent.clientX - disX;
-          var t = oEvent.clientY - disY;
 					//判断是否过界
           if(l < 0) {
             l = 0;
-          } else if(l > document.documentElement.clientWidth - oDiv.offsetWidth) {
-						l = document.documentElement.clientWidth - oDiv.offsetWidth;
-					}
-          if(t < 0) {
-            t = 0;
-          } else if(t > document.documentElement.clientHeight - oDiv.offsetHeight) {
-						t = document.documentElement.clientHeight - oDiv.offsetHeight;
+          } else if(l > oParent.offsetWidth - oDiv.offsetWidth) {
+						l = oParent.offsetWidth - oDiv.offsetWidth;
 					}
           oDiv.style.left = l + 'px';
-          oDiv.style.top = t + 'px';
-        }
+
+          var scale = l / (oParent.offsetWidth - oDiv.offsetWidth);
+          document.title = scale;
+          oDiv2.style.width = 400 * scale + 'px';
+          oDiv2.style.height = 400 * scale + 'px';
+        };
 
         document.onmouseup = function() {
 					//清空document的事件
           document.onmousemove = null;
           document.onmouseup = null;
-        }
+        };
 				//解决低版本火狐bug，干掉系统默认
         return false;
       }
@@ -49,6 +48,9 @@
   </script>
 </head>
 <body>
-  <div id="div1"></div>
+  <div id="parent">
+    <div id="div1"></div>
+  </div>
+  <div id="div2"></div>
 </body>
 </html>
