@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Description" content="">
+  <title>Read file data</title>
+  <script type="text/javascript" src="ajax.js"></script>
+  <script type="text/javascript">
+	window.onload = function() {
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var oBtn3 = document.getElementById('btn3');
+		var oUl = document.getElementById('ul1');
+		
+		//read normal txt
+		oBtn1.onclick = function() {
+			ajax('aaa.txt?t=' + new Date().getTime(), function(str) { //t参数是避免缓存的方法
+				alert(str);
+			}, function() {
+				alert('失败');
+			});
+		}
+
+		//read arr txt
+		oBtn2.onclick = function() {
+			ajax('arr.txt?t=' + new Date().getTime(), function(str) { //t参数是避免缓存的方法
+				alert(eval(str));
+				var arr = eval(str);
+				alert(arr[0]);
+			}, function() {
+				alert('失败');
+			});
+		}
+
+		//read json arr txt
+		oBtn3.onclick = function() {
+			ajax('data.txt?t=' + new Date().getTime(), function(str) { //t参数是避免缓存的方法
+				var arr = eval(str);
+				for(var i = 0; i < arr.length; i++) {
+					var oLi = document.createElement('li');
+
+					oLi.innerHTML = '用户名：<strong>' + arr[i].user + '</strong>  密码：<span>' + arr[i].pass + '</span>';
+
+					oUl.appendChild(oLi);
+				}
+			}, function() {
+				alert('失败');
+			});
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<input id="btn1" type="button" value="读取普通文本" />
+	<input id="btn2" type="button" value="读取数组文本" />
+	<input id="btn3" type="button" value="读取Json数组文本" />
+	<ul id="ul1"></ul>
+ </body>
+</html>
