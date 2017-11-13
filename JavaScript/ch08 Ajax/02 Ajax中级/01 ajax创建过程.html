@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Description" content="ajax">
+  <title>Ajax创建</title>
+  <script type="text/javascript">
+	window.onload = function() {
+		var oBtn = document.getElementById('btn1');
+		oBtn.onclick = function() {
+			//1.创建ajax对象
+			//js中调用一个未定义的变量，会报错；但是调用一个未定义的属性，则会提示undefined
+			if(window.XMLHttpRequest) {
+				var oAjax = new XMLHttpRequest();  //非IE6
+			} else {
+				var oAjax = new ActiveXObject("Microsoft.XMLHTTP");  //IE6
+			}
+
+			//2.连接服务器
+			//open(方法, 文件名, 异步传输)
+			oAjax.open('Get', 'aaa.txt?t='+new Date().getTime(), true); //默认true异步
+
+			//3.发送请求
+			oAjax.send();
+
+			//4.接收请求
+			oAjax.onreadystatechange = function() {
+				//oAjax.readyState浏览器和服务器，进行到哪一步了
+				if(oAjax.readyState==4) { //读取完成
+					if(oAjax.status==200) { //表示成功
+						alert('成功了：'+oAjax.responseText);
+					} else {
+						alert('失败了');
+					}
+				}
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<input id="btn1" type="button" value="读取" />
+	<ul id="ul1"></ul>
+ </body>
+</html>
